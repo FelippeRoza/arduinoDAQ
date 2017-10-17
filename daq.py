@@ -9,8 +9,6 @@ matplotlib.use('WXAgg')
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigCanvas
 
-#arduino_port = '/dev/ttyUSB0'
-arduino_port = '/dev/ttyACM0'
 from arduino import Arduino
 
 class MainWindow(wx.Frame):
@@ -25,7 +23,7 @@ class MainWindow(wx.Frame):
 
         # Try Arduino
         try:
-            self.arduino = Arduino(arduino_port, 115200)
+            self.arduino = Arduino(115200)
         except:
             print 'unable to connect to arduino'
 
