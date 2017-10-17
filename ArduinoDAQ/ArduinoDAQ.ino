@@ -34,17 +34,6 @@ void loop() {
       Serial.println( analogRead(A4) );    delayMicroseconds(d);
       Serial.println( analogRead(A5) );    delayMicroseconds(d);
 
-
-      // Testing
-      /*
-      Serial.println( "A0" );    delayMicroseconds(d);
-      Serial.println( "A1" );    delayMicroseconds(d);
-      Serial.println( "A2" );    delayMicroseconds(d);
-      Serial.println( "A3" );    delayMicroseconds(d);
-      Serial.println( "A4" );    delayMicroseconds(d);
-      Serial.println( "A5" );    delayMicroseconds(d);
-      */
-
     }//end if
   }// end if
 }// end loop
