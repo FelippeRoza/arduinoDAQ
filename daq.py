@@ -19,7 +19,7 @@ class MainWindow(wx.Frame):
 
 
     def __init__(self):
-        wx.Frame.__init__(self, None, title=self.title, size=(650,570))
+        wx.Frame.__init__(self, None, title=self.title, size=(650,600))
 
         # Try Arduino
         try:
