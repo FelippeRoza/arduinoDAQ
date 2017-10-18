@@ -148,7 +148,7 @@ class MainWindow(wx.Frame):
                 self.recording = False
 
             else:
-                self.output_file = self.txt_output_file.GetString(0,-1)
+                self.output_file = self.txt_output_file.GetValue()
                 self.t = 0
 
                 # check if file exists - ie may be saving over data
