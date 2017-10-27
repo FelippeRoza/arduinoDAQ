@@ -11,6 +11,10 @@ from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigCanvas
 
 from arduino import Arduino
 
+channels = ['i','v','i','v','i','v']
+y_scale = {'i':[0, 2.5, 5], 'v':[0, 12, 24], 'r':[0, 5000, 10000]}
+
+
 class MainWindow(wx.Frame):
     """ Main frame of the application
     """
@@ -28,9 +32,7 @@ class MainWindow(wx.Frame):
             print 'unable to connect to arduino'
 
         self.create_main_panel()
-
         self.recording = False
-
         time.sleep(1)
 
         # Timer
@@ -76,8 +78,8 @@ class MainWindow(wx.Frame):
         self.fig.subplots_adjust(hspace=.5) #sub plot spacing
 
         self.axes = [] #subplot list
-        for i in range(1,7):
-            self.axes.append(self.fig.add_subplot(3,2,i, xticks=[], yticks=[0, 500, 1000]))
+        for i, val in enumerate(channels):
+            self.axes.append(self.fig.add_subplot(3,2,i+1, xticks=[], yticks=y_scale[val]))
 
 
     def poll(self):
@@ -105,8 +107,8 @@ class MainWindow(wx.Frame):
         for (i, ax) in enumerate(self.axes):
             ax.plot(range(0,self.plotMem), x[:,i],'k')
             ax.set_title('CH A'+str(i))
-            ax.set_ylim(0,1000)
-            ax.set_yticks([0, 500, 1000])
+            # ax.set_ylim(0,20)
+            ax.set_yticks(y_scale[channels[i]])
             ax.set_xticks([])
             ax.hold(False)
 
